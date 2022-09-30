@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main>
+        <div class="profile__body">
+            <div class="profile__title">Profile</div>
+            <div class="profile__data">
+                <img class="profile__data--image" src="{{ app.user.image }}" alt="User profile picture">
+                <div class="profile__data--list">
+                    <ul>
+                        <li><div>Name: </div>{{ app.user.name }}</li>
+                        <li><div>Email: </div>{{ app.user.email }}</li>
+                        <li class="profile__data--list:info"><div>Games played: </div>{{ app.user.games }}</li>
+                        <li class="profile__data--list:gameswon"><div>Games won: </div>{{ app.user.gamesWon }}</li>
+                        <li class="profile__data--list:gameslost"><div>Games lost: </div>{{ app.user.gamesLost }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

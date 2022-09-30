@@ -1,0 +1,36 @@
+<header class="header__wrapper">
+    <nav>
+        <ul class="nav__list">
+            <li>
+                <a class="nav__title" href="{{ path('app_home') }}">Battleship</a>
+            </li>
+            {% if app.user %}
+                <li>
+                    <a class="nav__link" href="{{ path('app_game') }}">Play</a>
+                </li>
+                <li>
+                    <a class="nav__link" href="#"
+                       onclick="event.preventDefault(); document.getElementById('logout').submit()">
+                        Logout
+                    </a>
+                </li>
+                <li>
+                    <a class="nav__profile" href="{{ path('app_profile') }}">
+                        <div class="nav__profile--name">{{ app.user.name }}</div>
+                        <img class="nav__profile--image" src="{{ app.user.image }}" alt="Check user profile">
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a class="nav__link" href="{{ path('app_login') }}">Login</a>
+                </li>
+                <li>
+                    <a class="nav__link" href="{{ path('app_register') }}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <form action="{{ path('app_logout') }}" method="POST" class="hidden" id="logout">
+    </form>
+</header>

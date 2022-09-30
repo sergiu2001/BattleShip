@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('d6af46ae18da6d9657e1', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data.message));
+        });
+    </script>
+<main>
+    <div class="title">
+        <div class="title__user">Your board</div>
+        <div class="title__enemy">The enemy`s board</div>
+    </div>
+    <div class="game">
+        <div class="board__container__left"></div>
+        <div class="board__container__right"></div>
+    </div>
+    <div class="ships">
+
+    </div>
+</main>
+{% endblock %}
